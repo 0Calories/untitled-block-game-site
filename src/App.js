@@ -1,3 +1,9 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 import Navbar from './components/Navbar';
 import LoginForm from './components/LoginForm';
 
@@ -7,7 +13,21 @@ function App() {
   return (
     <div>
       <Navbar />
-      <LoginForm />
+
+      <Router>
+        <Switch>
+
+          <Route exact path="/">
+            <LoginForm />
+          </Route>
+
+          <Route exact path="/profile">
+            <LoginForm />
+          </Route>
+
+        </Switch>
+      </Router>
+
     </div>
   );
 }
