@@ -1,5 +1,5 @@
-import Navbar from './components/Navbar/Navbar';
-import LoginForm from './components/LoginForm/LoginForm';
+import Navbar from './components/Navbar';
+import LoginForm from './components/LoginForm';
 
 import './styles/styles.scss';
 

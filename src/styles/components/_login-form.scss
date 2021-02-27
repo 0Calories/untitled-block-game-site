@@ -1,8 +1,81 @@
+.login {
+    font-weight: bold;
+    line-height: 169.4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .login-text {
     color: $primary;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
     font-size: 51px;
-    line-height: 169.4%;
+    text-align: center;
     text-shadow: 4px 9px 4px rgba(0, 0, 0, 0.25);
+}
+
+.login-box {
+    background: $item;
+    box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    padding: 6rem 1rem 0rem 1rem;
+    width: 400px;
+    height: 400px;
+    
+    // Mobile 
+    @media only screen and (min-width: 320px) and (max-width: 479px) {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input {
+    background-color: $background;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 21px;
+    font-weight: bold;
+    text-decoration: none;
+    width: 290px;
+    height: 50px;
+    margin-bottom: 4rem;
+}
+
+.input:after {
+    content: 'df';
+    display: block;
+    width: 0;
+    height: 50px;
+    background: #000;
+    transition: width .3s;
+}
+
+.input:focus::after {
+    width: 100%;
+    //transition: width .3s;
+}
+
+.input::placeholder {
+    color: $subtle-text;
+    text-align: center;
+}
+
+.login-button {
+    background-color: $primary;
+    border: none;
+    border-radius: 7px; 
+    color: white;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 24px;
+    margin-top: 5rem;
+    width: 137px;
+    height: 51px;
 }
