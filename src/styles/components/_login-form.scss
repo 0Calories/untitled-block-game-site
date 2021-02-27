@@ -37,7 +37,8 @@
 .input {
     background-color: $background;
     border: none;
-    border-radius: 10px;
+    border-bottom: 3px solid $primary;
+    border-radius: 10px 10px 0px 0px;
     color: white;
     display: inline-block;
     font-size: 21px;
@@ -46,20 +47,6 @@
     width: 290px;
     height: 50px;
     margin-bottom: 4rem;
-}
-
-.input:after {
-    content: 'df';
-    display: block;
-    width: 0;
-    height: 50px;
-    background: #000;
-    transition: width .3s;
-}
-
-.input:focus::after {
-    width: 100%;
-    //transition: width .3s;
 }
 
 .input::placeholder {
