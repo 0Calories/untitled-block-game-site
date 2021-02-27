@@ -8,23 +8,13 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <Router className="navbar">
-        <div className="navbar">
-          <Link to="/">Login</Link>
-          <Link to="/profile">Profile</Link>
-        </div>
-      </Router >
+      <div className="navbar">
+        <Link to="/">Login</Link>
+        <Link to="/profile">Profile</Link>
+      </div>
     );
   }
 
 }
-
-function Home() {
-  return (
-    <div>
-    </div>
-  );
-}
-
 
 export default Navbar;

@@ -12,25 +12,26 @@ import './styles/styles.scss';
 function App() {
   return (
     <div>
-      <Navbar />
-
       <Router>
+        <Navbar />
+
         <Switch>
-
-          <Route exact path="/">
-            <LoginForm />
-          </Route>
-
-          <Route exact path="/profile">
-            <LoginForm />
-          </Route>
-
+          <Route exact path="/" component={LoginForm} />
+          <Route path="/profile" component={Profile} />
         </Switch>
+
       </Router>
 
     </div>
   );
 }
 
+function Profile() {
+  return (
+    <div>
+      test
+    </div>
+  );
+}
 
 export default App;
