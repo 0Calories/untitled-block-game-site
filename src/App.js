@@ -26,7 +26,6 @@ const initialState = {
 
 function App() {
   const [state, dispatch] = useReducer(authReducer, initialState);
-  console.dir(state);
 
   return (
     <AuthContext.Provider

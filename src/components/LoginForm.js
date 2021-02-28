@@ -22,8 +22,6 @@ const LoginForm = () => {
 
   const login = async (e) => {
     e.preventDefault();
-    console.dir(graphQLClient);
-    console.log(`ID: ${loginId}, Password: ${password}`);
 
     const variables = {
       data: {
@@ -40,7 +38,7 @@ const LoginForm = () => {
         token: response.login.token,
       });
     } catch (error) {
-      console.log(error.message);
+      console.error(error.response.errors[0].message);
     }
   };
 
