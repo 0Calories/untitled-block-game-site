@@ -2,13 +2,13 @@ const Profile = (props) => {
   const { character } = props;
 
   return (
-    <div>
+    <div className="profile-container">
       <div className="character-pic">
         <img src={process.env.PUBLIC_URL + '/images/bean-cowboy.png'} alt={character.name} />
       </div>
 
       <div className="character-info">
-        <h1>{character.name}</h1>
+        <p className="character-name">{character.name}</p>
         <div className="bio">{character.bio}</div>
       </div>
     </div>
