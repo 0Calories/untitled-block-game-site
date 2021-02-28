@@ -1,11 +1,7 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Link
-} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
-
   render() {
     return (
       <div className="navbar">
@@ -14,7 +10,6 @@ class Navbar extends React.Component {
       </div>
     );
   }
-
 }
 
 export default Navbar;
