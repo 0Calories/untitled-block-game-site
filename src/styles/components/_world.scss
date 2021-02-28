@@ -7,7 +7,7 @@
     background: $item;
     border-radius: 4px;
     border-bottom: 4px solid $tertiary;
-    margin-top: 3rem;
+    margin: 3rem 0;
     width: 850px;
     font-weight: 700;
     line-height: 169.4%;
@@ -20,13 +20,66 @@
     margin-top: 1rem;
 }
 
+.world-body {
+    display: flex;
+    flex-direction: row;
+}
+
 .world-thumbnail {
     width: 380px;
     height: 250px;
     border: 2px solid $primary;
+    margin-left: 43px;
+    margin-bottom: 36px;
 }
 
 .world-thumbnail > img {
     width: inherit;
     height: inherit;
+}
+
+.container-right {
+    display: flex;
+    flex-direction: column;
+    margin-left: 18px;
+}
+
+.world-description {
+    width: 374px;
+    height: 157px;
+    background: $background;
+    border-radius: 4px;
+    color: white;
+}
+
+.world-description-text {
+    padding: 13px;
+}
+
+.world-visits {
+    color: $tertiary;
+    margin: 0.1rem 0 0 1rem;
+}
+
+.visit-button {
+    margin: 1rem 0 0 6.5rem;
+    background-color: $primary;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    width: 166px;
+    height: 50px;
+    font-weight: 800;
+    font-size: 39px;
+    text-shadow: 2px 3px 0px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+}
+
+.visit-button:hover {
+    background-color: darken($primary, 25);
+}
+
+.login-button:focus {
+    background-color: darken($primary, 25);
 }
