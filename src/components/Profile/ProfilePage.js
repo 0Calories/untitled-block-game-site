@@ -3,11 +3,13 @@ import { gql } from 'graphql-request';
 
 import AuthContext from '../../context/AuthContext';
 import Profile from './Profile';
+import World from './World';
 
 const myCharacter = gql`
   query {
     myCharacter {
       id
+      name
       colour
       bobux
       bio
@@ -24,6 +26,7 @@ const myCharacter = gql`
 const ProfilePage = () => {
   const { graphQLClient } = useContext(AuthContext);
   const [character, setCharacter] = useState({});
+  const [worlds, setWorlds] = useState([]);
 
   // Fetch the authenticated user's profile
   useEffect(() => {
@@ -31,6 +34,7 @@ const ProfilePage = () => {
       const response = await graphQLClient.request(myCharacter);
       console.dir(response);
       setCharacter(response.myCharacter);
+      setWorlds(response.myCharacter.worlds);
     };
 
     fetchData();
@@ -46,6 +50,7 @@ const ProfilePage = () => {
   return (
     <div>
       <Profile character={character} />
+      {worlds.map((world) => <World world={world} key={world.id} />)}
     </div>
   );
 };
