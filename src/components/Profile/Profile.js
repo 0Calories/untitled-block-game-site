@@ -4,7 +4,7 @@ const Profile = (props) => {
   return (
     <div>
       <div className="character-pic">
-        <img></img>
+        <img alt={character.name}></img>
       </div>
 
       <div className="character-info">

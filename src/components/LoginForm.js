@@ -34,7 +34,11 @@ const LoginForm = () => {
 
     try {
       const response = await graphQLClient.request(Login, variables);
-      console.dir(response);
+      dispatch({
+        type: 'LOGIN',
+        user: response.login.user,
+        token: response.login.token,
+      });
     } catch (error) {
       console.log(error.message);
     }
