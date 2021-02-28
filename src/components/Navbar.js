@@ -13,9 +13,9 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <Link to="/">Login</Link>
-      <Link to="/profile">Profile</Link>
-      <a onClick={logOut}>Log Out</a>
+      {/* <Link to="/">Login</Link>
+      <Link to="/profile">Profile</Link> */}
+      <button onClick={logOut}>Log Out</button>
     </div>
   );
 };

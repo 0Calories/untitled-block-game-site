@@ -4,7 +4,7 @@ const Profile = (props) => {
   return (
     <div>
       <div className="character-pic">
-        <img alt={character.name}></img>
+        <img src={process.env.PUBLIC_URL + '/images/bean-cowboy.png'} alt={character.name} />
       </div>
 
       <div className="character-info">

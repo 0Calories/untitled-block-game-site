@@ -18,6 +18,10 @@ const graphQLClient = new GraphQLClient(API_URL);
 const user = JSON.parse(localStorage.getItem('user'));
 const token = JSON.parse(localStorage.getItem('token'));
 
+if (token) {
+  graphQLClient.setHeader('Authorization', `Bearer ${token}`);
+}
+
 const initialState = {
   isAuthenticated: !!token,
   user,
