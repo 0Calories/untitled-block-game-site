@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { gql } from 'graphql-request';
 
 import AuthContext from '../../context/AuthContext';
@@ -10,6 +10,7 @@ const myCharacter = gql`
       id
       colour
       bobux
+      bio
       worlds {
         id
         name
@@ -22,23 +23,25 @@ const myCharacter = gql`
 
 const ProfilePage = () => {
   const { graphQLClient } = useContext(AuthContext);
+  const [character, setCharacter] = useState({});
 
   // Fetch the authenticated user's profile
   useEffect(() => {
     const fetchData = async () => {
       const response = await graphQLClient.request(myCharacter);
       console.dir(response);
+      setCharacter(response.myCharacter);
     };
 
     fetchData();
   }, [graphQLClient]);
 
-  const character = {
-    name: 'Ash',
-    bio:
-      'Hey there, I’m the lead (and only) Boblox developer. I like making and playing games in my spare time. Feel free to leave me some feedback on Boblox, it’s a work in progress :)',
-    pic: 'https://i.pinimg.com/originals/be/e6/60/bee66095c5539c8d1f1e1f247214f330.png'
-  };
+  // const character = {
+  //   name: 'Ash',
+  //   bio:
+  //     'Hey there, I’m the lead (and only) Boblox developer. I like making and playing games in my spare time. Feel free to leave me some feedback on Boblox, it’s a work in progress :)',
+  //   pic: 'https://i.pinimg.com/originals/be/e6/60/bee66095c5539c8d1f1e1f247214f330.png'
+  // };
 
   return (
     <div>
