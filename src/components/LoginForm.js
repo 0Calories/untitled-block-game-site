@@ -3,7 +3,7 @@ import { gql } from 'graphql-request';
 
 import AuthContext from '../context/AuthContext';
 
-const Login = gql`
+const login = gql`
   mutation($data: LoginInput!) {
     login(data: $data) {
       token
@@ -20,23 +20,26 @@ const LoginForm = () => {
   const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
 
-  const login = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     const variables = {
       data: {
         username: loginId,
-        password,
-      },
+        password
+      }
     };
 
     try {
-      const response = await graphQLClient.request(Login, variables);
+      const response = await graphQLClient.request(login, variables);
+
       dispatch({
         type: 'LOGIN',
         user: response.login.user,
-        token: response.login.token,
+        token: response.login.token
       });
+
+      graphQLClient.setHeader('Authorization', `Bearer ${response.login.token}`);
     } catch (error) {
       console.error(error.response.errors[0].message);
     }
@@ -66,7 +69,7 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button className="login-button" type="submit" onClick={login}>
+          <button className="login-button" type="submit" onClick={handleLogin}>
             Log In
           </button>
         </form>

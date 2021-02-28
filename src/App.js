@@ -25,7 +25,7 @@ if (token) {
 const initialState = {
   isAuthenticated: !!token,
   user,
-  token,
+  token
 };
 
 function App() {
@@ -36,19 +36,15 @@ function App() {
       value={{
         state,
         dispatch,
-        graphQLClient,
+        graphQLClient
       }}
     >
       <Router>
         <Navbar />
 
         <Switch>
-          <Route
-            exact
-            path="/"
-            component={!state.isAuthenticated ? LoginForm : ProfilePage}
-          />
-          <Route path="/profile" component={ProfilePage} />
+          <Route exact path="/" component={!state.isAuthenticated ? LoginForm : ProfilePage} />
+          <Route path="/profile" component={!state.isAuthenticated ? LoginForm : ProfilePage} />
         </Switch>
       </Router>
     </AuthContext.Provider>

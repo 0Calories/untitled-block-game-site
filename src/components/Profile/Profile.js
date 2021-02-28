@@ -1,5 +1,4 @@
-const Profile = (props) => {
-  const { character } = props;
+const Profile = ({ character }) => {
 
   return (
     <div className="profile-container">

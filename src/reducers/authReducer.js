@@ -8,7 +8,7 @@ const authReducer = (state, action) => {
         ...state,
         isAuthenticated: true,
         user: action.user,
-        token: action.token,
+        token: action.token
       };
 
     case 'LOGOUT':
@@ -18,7 +18,7 @@ const authReducer = (state, action) => {
         ...state,
         isAuthenticated: false,
         user: null,
-        token: null,
+        token: null
       };
 
     default:

@@ -14,13 +14,13 @@
     border-radius: 100%;
     border: 3px solid $secondary;
     box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.25);
-    max-width: 210px;
-    max-height: 210px;
+    width: 210px;
+    height: 210px;
 }
 
 .character-pic > img {
     margin-top: 0.5rem;
-    max-width: 100%;
+    min-width: inherit;
     max-height: 100%;
 }
 
