@@ -1,5 +1,5 @@
 import { React, useContext } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CashCount from './CashCount';
 import AuthContext from '../context/AuthContext';
 
@@ -17,6 +17,7 @@ const Navbar = () => {
       <Link to="/profile">Profile</Link> */}
       <CashCount bobux={69420} />
       <button onClick={logOut}>Log Out</button>
+      <Link to="/players">Players</Link>
     </div>
   );
 };

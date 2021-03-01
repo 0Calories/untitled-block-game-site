@@ -7,6 +7,7 @@ import authReducer from './reducers/authReducer';
 import Navbar from './components/Navbar';
 import LoginForm from './components/LoginForm';
 import ProfilePage from './components/Profile/ProfilePage';
+import PlayerSearchPage from './components/PlayerSearch/PlayerSearchPage';
 
 import './styles/styles.scss';
 
@@ -45,6 +46,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={!state.isAuthenticated ? LoginForm : ProfilePage} />
           <Route path="/profile" component={!state.isAuthenticated ? LoginForm : ProfilePage} />
+          <Route path="/players" component={PlayerSearchPage} />
         </Switch>
       </Router>
     </AuthContext.Provider>
