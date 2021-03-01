@@ -19,6 +19,7 @@ const LoginForm = () => {
   const { dispatch, graphQLClient } = useContext(AuthContext);
   const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -42,6 +43,7 @@ const LoginForm = () => {
       graphQLClient.setHeader('Authorization', `Bearer ${response.login.token}`);
     } catch (error) {
       console.error(error.response.errors[0].message);
+      setError(error.response.errors[0].message);
     }
   };
 
@@ -50,6 +52,7 @@ const LoginForm = () => {
       <h2 className="login-text">Log In</h2>
 
       <div className="login-box">
+        <p className="error-message">{error}</p>
         <form className="login-form">
           <input
             className="input"

@@ -14,12 +14,15 @@
 }
 
 .login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: $item;
     box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
-    padding: 6rem 1rem 0rem 1rem;
+    padding: 1rem 1rem 0rem 1rem;
     width: 400px;
-    height: 400px;
+    height: 480px;
     
     // Mobile 
     @media only screen and (min-width: 280px) and (max-width: 479px) {
@@ -84,4 +87,13 @@
 
 .login-button:focus {
     background-color: darken($primary, 25);
+}
+
+.error-message {
+    display: inline-block;
+    height: 1rem;
+    text-align: center;
+    color: $alert;
+    font-size: 18px;
+    margin: 0 0 2rem 0;
 }
