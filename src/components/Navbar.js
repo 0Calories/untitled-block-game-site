@@ -1,10 +1,10 @@
 import { React, useContext } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import AuthContext from '../context/AuthContext';
 
 const Navbar = () => {
-  const { dispatch, graphQLClient } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   const logOut = (e) => {
     e.preventDefault();
