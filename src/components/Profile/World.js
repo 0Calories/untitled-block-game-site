@@ -6,7 +6,11 @@ const World = ({ world }) => {
         <p className="world-name">{world.name}</p>
         <div className="world-body">
           <div className="world-thumbnail">
-            <img src={process.env.PUBLIC_URL + '/images/baseplate.png'} alt={world.name} />
+            <img
+              src={`https://blockgame-world-files.s3.ca-central-1.amazonaws.com/${world.id}/thumbnail.png`}
+              alt={world.name}
+              onError={(e) => { e.target.onerror = null; e.target.src = process.env.PUBLIC_URL + '/images/baseplate.png' }}
+            />
           </div>
           <div className="container-right">
             <div className="world-description">
@@ -19,6 +23,7 @@ const World = ({ world }) => {
       </div>
     </div>
   );
+
 };
 
 export default World;
