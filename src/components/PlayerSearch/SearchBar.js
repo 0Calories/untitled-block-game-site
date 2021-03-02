@@ -1,16 +1,37 @@
-const SearchBar = () => {
-  return (
-    <div className="search-bar">
-      <div className="search-text">
-        <input className="search-input" placeholder="Search for a player..."></input>
-      </div>
+import { useState } from 'react';
 
-      <div className="search-button">
-        <svg className="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
+const SearchBar = ({ graphQLClient, setCharacters, getPlayers }) => {
+  const [query, setQuery] = useState('');
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const variables = {
+      query
+    };
+
+    const response = await graphQLClient.request(getPlayers, variables);
+    setCharacters(response.getCharacters);
+    console.dir(response);
+  };
+
+  return (
+    <form onSubmit={handleSearch}>
+      <div className="search-bar">
+        <div className="search-text">
+          <input
+            className="search-input"
+            placeholder="Search for a player..."
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
+
+        <div className="search-button" onClick={handleSearch}>
+          <svg className="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
       </div>
-    </div>
+    </form>
   );
 };
 

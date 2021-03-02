@@ -32,8 +32,10 @@ const PlayerSearchPage = () => {
 
   return (
     <div className="search-page">
-      <SearchBar />
-      {characters.map((character) => <PlayerRow character={character} />)}
+      <SearchBar setCharacters={setCharacters} graphQLClient={graphQLClient} getPlayers={getPlayers} />
+      {characters.map((character) =>
+        <PlayerRow character={character} key={character.id} />
+      )}
     </div>
   );
 };

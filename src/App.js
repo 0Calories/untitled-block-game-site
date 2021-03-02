@@ -11,7 +11,7 @@ import PlayerSearchPage from './components/PlayerSearch/PlayerSearchPage';
 
 import './styles/styles.scss';
 
-const API_URL = 'http://untitled-block-game-api.herokuapp.com/';
+const API_URL = 'https://untitled-block-game-api.herokuapp.com/';
 
 const graphQLClient = new GraphQLClient(API_URL);
 
