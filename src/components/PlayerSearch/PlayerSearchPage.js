@@ -3,6 +3,7 @@ import { gql } from 'graphql-request';
 
 import AuthContext from '../../context/AuthContext';
 import SearchBar from './SearchBar';
+import PlayerRow from './PlayerRow';
 
 const getPlayers = gql`
   query($query: String) {
@@ -17,13 +18,13 @@ const getPlayers = gql`
 
 const PlayerSearchPage = () => {
   const { graphQLClient } = useContext(AuthContext);
-  const [players, setPlayers] = useState([]);
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await graphQLClient.request(getPlayers);
       console.dir(response);
-      setPlayers(response.getCharacters);
+      setCharacters(response.getCharacters);
     };
 
     fetchData();
@@ -32,7 +33,7 @@ const PlayerSearchPage = () => {
   return (
     <div className="search-page">
       <SearchBar />
-      {players.map((player) => <p>{player.name}</p>)}
+      {characters.map((character) => <PlayerRow character={character} />)}
     </div>
   );
 };
