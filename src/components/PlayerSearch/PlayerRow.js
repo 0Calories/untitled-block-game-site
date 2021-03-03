@@ -1,8 +1,16 @@
+import { useHistory } from 'react-router-dom';
+
 import CashCount from '../CashCount';
 
 const PlayerRow = ({ character }) => {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/players/${character.id}`);
+  };
+
   return (
-    <div className="character-row">
+    <div className="character-row" onClick={handleClick}>
 
       <div className="pic-section">
         <div className="pic-wrapper">

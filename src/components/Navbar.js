@@ -13,8 +13,6 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      {/* <Link to="/">Login</Link>
-      <Link to="/profile">Profile</Link> */}
       <CashCount bobux={69420} />
       <button onClick={logOut}>Log Out</button>
       <Link to="/players">Players</Link>

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { gql } from 'graphql-request';
 
 import AuthContext from '../../context/AuthContext';
@@ -23,22 +24,51 @@ const myCharacter = gql`
   }
 `;
 
+const getCharacter = gql`
+  query($id: Int!) {
+    getCharacter(id: $id) {
+      id
+      name
+      colour
+      bobux
+      bio
+      worlds {
+        id
+        name
+        description
+        visits
+      }
+    }
+  }
+`;
+
 const ProfilePage = () => {
   const { graphQLClient } = useContext(AuthContext);
+  const { playerId } = useParams();
   const [character, setCharacter] = useState({});
   const [worlds, setWorlds] = useState([]);
 
-  // Fetch the authenticated user's profile
   useEffect(() => {
     const fetchData = async () => {
-      const response = await graphQLClient.request(myCharacter);
+      // Determine whether to display the logged in user's profile, or another
+      let response;
+      let character;
+
+      if (playerId) {
+        response = await graphQLClient.request(getCharacter, { id: parseInt(playerId) });
+        character = response.getCharacter;
+      } else {
+        response = await graphQLClient.request(myCharacter);
+        character = response.myCharacter;
+      }
+
       console.dir(response);
-      setCharacter(response.myCharacter);
-      setWorlds(response.myCharacter.worlds);
+      setCharacter(character);
+      setWorlds(character.worlds);
     };
 
     fetchData();
-  }, [graphQLClient]);
+  }, [graphQLClient, playerId]);
 
   // const character = {
   //   name: 'Ash',

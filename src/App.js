@@ -46,7 +46,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={!state.isAuthenticated ? LoginForm : ProfilePage} />
           <Route path="/profile" component={!state.isAuthenticated ? LoginForm : ProfilePage} />
-          <Route path="/players" component={PlayerSearchPage} />
+          <Route exact path="/players" component={PlayerSearchPage} />
+          <Route path="/players/:playerId" component={ProfilePage} />
         </Switch>
       </Router>
     </AuthContext.Provider>

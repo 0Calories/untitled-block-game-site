@@ -32,6 +32,8 @@
 }
 
 .character-name {
+    display: inline-block;
+    height: 28px;
     color: $secondary;
     font-size: 28px;
     margin: 0 0 1rem 1rem;
