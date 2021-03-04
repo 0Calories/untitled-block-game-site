@@ -6,7 +6,8 @@ const HomePage = () => {
       <p>
         Untitled Block Game is a game about building worlds and sharing them with others.
         You can get rewarded with bobux by having others visit your worlds, which you will be able to spend on special parts for your home world,
-        or customizations for your character (not available yet).
+        or customizations for your character (not available yet). There's not a whole lot you can do at the moment, but thanks for being a pre-alpha tester!
+        Feel free to leave me any feedback or ideas.
       </p>
 
       <h2>Installation Instructions</h2>
