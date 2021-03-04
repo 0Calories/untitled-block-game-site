@@ -43,7 +43,7 @@ const LoginForm = () => {
       });
 
       graphQLClient.setHeader('Authorization', `Bearer ${response.login.token}`);
-      history.push('/players/me');
+      history.push('/players/me')
     } catch (error) {
       console.error(error.response.errors[0].message);
       setError(error.response.errors[0].message);

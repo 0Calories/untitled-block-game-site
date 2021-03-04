@@ -1,10 +1,15 @@
-import { React } from 'react';
+import { React, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import CashCount from '../CashCount';
 import UserMenu from './UserMenu';
+import AuthContext from '../../context/AuthContext';
 
 const Navbar = () => {
+  const { state } = useContext(AuthContext);
+
+  console.log(state.isAuthenticated);
+
 
   return (
     <div className="navbar">
@@ -27,11 +32,13 @@ const Navbar = () => {
         Players
       </NavLink>
 
-      <div className="cash-wrapper">
-        <CashCount bobux={69420} />
-      </div>
+      {state.isAuthenticated &&
+        <div className="cash-wrapper">
+          <CashCount bobux={69420} />
+        </div>
+      }
 
-      <UserMenu />
+      {state.isAuthenticated && <UserMenu />}
     </div>
   );
 };
