@@ -1,4 +1,4 @@
-import { React, useContext, useState } from 'react';
+import { React, useContext, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import AuthContext from '../../context/AuthContext';
@@ -6,8 +6,25 @@ import AuthContext from '../../context/AuthContext';
 const UserMenu = ({ character }) => {
   const { dispatch } = useContext(AuthContext);
   const history = useHistory();
+  const buttonRef = useRef(null);
+  const menuRef = useRef(null);
 
   const [isVisible, setVisibility] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!menuRef.current.contains(e.target) && !buttonRef.current.contains(e.target)) {
+        if (isVisible) {
+          setVisibility(false);
+        }
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Clean up the event listener on unMount
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isVisible])
 
   const handleMenuOpen = () => {
     setVisibility(!isVisible);
@@ -28,13 +45,13 @@ const UserMenu = ({ character }) => {
 
   return (
     <div className="menu-wrapper">
-      <div className="player-button" onClick={handleMenuOpen}>
+      <div className="player-button" onClick={handleMenuOpen} ref={buttonRef}>
         <div className="player-button__pic-wrapper">
           <img src={process.env.PUBLIC_URL + '/images/bean-cowboy.png'} alt="player" />
         </div>
       </div>
 
-      <div className={isVisible ? 'user-menu' : 'user-menu user-menu--hidden'}>
+      <div className={isVisible ? 'user-menu' : 'user-menu user-menu--hidden'} ref={menuRef}>
         <div className="user-menu__player">
           <div className="user-menu__player__pic-wrapper">
             <img src={process.env.PUBLIC_URL + '/images/bean-cowboy.png'} alt="player" />
