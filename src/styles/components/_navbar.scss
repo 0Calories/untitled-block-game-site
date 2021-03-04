@@ -139,6 +139,9 @@
     font-weight: bold;
     font-size: 18px;
     margin-left: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .user-menu-button__icon {
