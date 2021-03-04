@@ -31,10 +31,12 @@ const UserMenu = ({ character }) => {
   }
 
   const handleAccountClick = () => {
+    setVisibility(false);
     alert('This feature is not ready yet!');
   }
 
   const handleProfileClick = () => {
+    setVisibility(false);
     history.push('/players/me');
   }
 
