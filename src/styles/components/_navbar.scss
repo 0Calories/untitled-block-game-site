@@ -31,6 +31,33 @@
     background: lighten($background, 1%);
 }
 
+.navbar__login-button {
+    background-color: $primary;
+    border: none;
+    border-radius: 7px; 
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 24px;
+    width: 137px;
+    height: 51px;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+    margin: 1rem 1rem 0 auto;
+}
+
+.navbar__login-button:hover {
+    background-color: darken($primary, 25);
+}
+
+.navbar__login-button--hidden {
+    display: none;
+}
+
 
 // Animations, these are tricky to get working, look into this later
 .navlink-wrapper {

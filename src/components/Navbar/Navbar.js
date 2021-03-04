@@ -59,6 +59,18 @@ const Navbar = () => {
       }
 
       {state.isAuthenticated && <UserMenu character={character} />}
+
+      {!state.isAuthenticated &&
+        <NavLink
+          to="/login"
+          exact
+          className="navbar__login-button"
+          activeClassName="navbar__login-button--hidden"
+        >
+          Log In
+        </NavLink>
+      }
+
     </div>
   );
 };
