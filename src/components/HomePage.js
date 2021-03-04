@@ -1,6 +1,10 @@
+import Loading from './Loading/Loading';
+
 const HomePage = () => {
   return (
     <div className="home-page">
+      <Loading />
+
       <h1>Welcome!</h1>
 
       <p>
