@@ -166,3 +166,17 @@
 .user-menu-button:hover {
     background: lighten($dark, 4%);
 }
+
+.x-gon-give-it-to-ya {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 20px;
+    width: 20px;
+    color: lighten($item, 20%);
+    cursor: pointer;
+}
+
+.x-gon-give-it-to-ya:hover {
+    color: lighten($item, 50%);
+}
