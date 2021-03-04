@@ -31,6 +31,7 @@ const Navbar = () => {
       >
         Players
       </NavLink>
+
       <div className="cash-wrapper">
         <CashCount bobux={69420} />
       </div>

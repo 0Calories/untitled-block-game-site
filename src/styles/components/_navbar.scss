@@ -12,7 +12,6 @@
     font-size: 24px;
     font-weight: bold;
     height: 74px;
-    margin-right: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
     text-decoration: none;
@@ -20,7 +19,7 @@
 }
 
 .navlink__active {
-    border-bottom: 6px solid $primary;
+    border-bottom: 4px solid $primary;
 }
 
 .cash-wrapper {
@@ -29,3 +28,28 @@
     margin-left: auto;
     margin-right: 2rem;
 }
+
+.navlink:hover:not(.navlink__active) {
+    background: lighten($background, 1%);
+}
+
+
+// Animations, these are tricky to get working, look into this later
+.navlink-wrapper {
+    display: inline-block;
+    height: 100%;
+    margin-right: 1rem;
+}
+// .navlink-wrapper::after {
+//     content: '';
+//     display: block;
+//     width: 0;
+//     height: 3px;
+//     margin-top: 1px;
+//     background: $primary;
+//     transition: width .3s;
+// }
+
+// .navlink-wrapper:hover::after {
+//     width: 100%;
+// }
