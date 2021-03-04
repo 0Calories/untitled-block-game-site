@@ -1,4 +1,4 @@
-import { React, useContext } from 'react';
+import { React, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import AuthContext from '../../context/AuthContext';
@@ -6,6 +6,12 @@ import AuthContext from '../../context/AuthContext';
 const UserMenu = ({ player }) => {
   const { dispatch } = useContext(AuthContext);
   const history = useHistory();
+
+  const [isVisible, setVisibility] = useState(false);
+
+  const handleMenuOpen = () => {
+    setVisibility(!isVisible);
+  }
 
   const handleAccountClick = () => {
     alert('This feature is not ready yet!');
@@ -22,13 +28,13 @@ const UserMenu = ({ player }) => {
 
   return (
     <div className="menu-wrapper">
-      <div className="player-button">
+      <div className="player-button" onClick={handleMenuOpen}>
         <div className="player-button__pic-wrapper">
           <img src={process.env.PUBLIC_URL + '/images/bean-cowboy.png'} alt="player" />
         </div>
       </div>
 
-      <div className="user-menu">
+      <div className={isVisible ? 'user-menu' : 'user-menu user-menu--hidden'}>
         <div className="user-menu__player">
           <div className="user-menu__player__pic-wrapper">
             <img src={process.env.PUBLIC_URL + '/images/bean-cowboy.png'} alt="player" />
