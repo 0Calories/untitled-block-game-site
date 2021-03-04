@@ -62,7 +62,6 @@ const ProfilePage = () => {
         character = response.getCharacter;
       }
 
-      console.dir(response);
       setCharacter(character);
       setWorlds(character.worlds);
     };

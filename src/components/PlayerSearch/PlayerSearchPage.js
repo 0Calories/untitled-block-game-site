@@ -23,7 +23,6 @@ const PlayerSearchPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await graphQLClient.request(getPlayers);
-      console.dir(response);
       setCharacters(response.getCharacters);
     };
 

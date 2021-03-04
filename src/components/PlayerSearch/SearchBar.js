@@ -11,7 +11,6 @@ const SearchBar = ({ graphQLClient, setCharacters, getPlayers }) => {
 
     const response = await graphQLClient.request(getPlayers, variables);
     setCharacters(response.getCharacters);
-    console.dir(response);
   };
 
   return (

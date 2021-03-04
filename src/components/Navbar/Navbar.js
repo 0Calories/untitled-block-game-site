@@ -1,14 +1,34 @@
-import { React, useContext } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { gql } from 'graphql-request';
 
 import CashCount from '../CashCount';
 import UserMenu from './UserMenu';
 import AuthContext from '../../context/AuthContext';
 
-const Navbar = () => {
-  const { state } = useContext(AuthContext);
+const myCharacter = gql`
+  query {
+    myCharacter {
+      name
+      bobux
+    }
+  }
+`;
 
-  console.log(state.isAuthenticated);
+const Navbar = () => {
+  const { state, graphQLClient } = useContext(AuthContext);
+  const [character, setCharacter] = useState({ name: 'N/A', bobux: 0 });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await graphQLClient.request(myCharacter);
+      setCharacter(response.myCharacter);
+    };
+
+    if (state.isAuthenticated) {
+      fetchData();
+    }
+  }, [graphQLClient, state.isAuthenticated]);
 
 
   return (
@@ -34,11 +54,11 @@ const Navbar = () => {
 
       {state.isAuthenticated &&
         <div className="cash-wrapper">
-          <CashCount bobux={69420} />
+          <CashCount bobux={character.bobux} />
         </div>
       }
 
-      {state.isAuthenticated && <UserMenu />}
+      {state.isAuthenticated && <UserMenu character={character} />}
     </div>
   );
 };

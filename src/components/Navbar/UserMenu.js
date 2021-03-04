@@ -1,29 +1,13 @@
-import { React, useContext, useState, useEffect } from 'react';
+import { React, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { gql } from 'graphql-request';
 
 import AuthContext from '../../context/AuthContext';
 
-const myCharacter = gql`
-  query {
-    myCharacter {
-      name
-      bobux
-    }
-  }
-`;
-
-const UserMenu = ({ player }) => {
-  const { dispatch, graphQLClient } = useContext(AuthContext);
+const UserMenu = ({ character }) => {
+  const { dispatch } = useContext(AuthContext);
   const history = useHistory();
 
   const [isVisible, setVisibility] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = graphQLClient.request(myCharacter);
-    }
-  }, [graphQLClient]);
 
   const handleMenuOpen = () => {
     setVisibility(!isVisible);
@@ -56,7 +40,7 @@ const UserMenu = ({ player }) => {
             <img src={process.env.PUBLIC_URL + '/images/bean-cowboy.png'} alt="player" />
           </div>
 
-          <p className="user-menu__player__name">hedyskiiboooooo0000</p>
+          <p className="user-menu__player__name">{character.name}</p>
         </div>
 
         <div className="user-menu-button" onClick={handleAccountClick}>
