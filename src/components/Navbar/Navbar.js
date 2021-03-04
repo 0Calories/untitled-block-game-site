@@ -1,6 +1,8 @@
 import { React, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+
 import CashCount from '../CashCount';
+import UserMenu from './UserMenu';
 import AuthContext from '../../context/AuthContext';
 
 const Navbar = () => {
@@ -35,6 +37,8 @@ const Navbar = () => {
       <div className="cash-wrapper">
         <CashCount bobux={69420} />
       </div>
+
+      <UserMenu />
     </div>
   );
 };

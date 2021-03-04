@@ -26,7 +26,7 @@
     display: flex;
     align-items: center;
     margin-left: auto;
-    margin-right: 2rem;
+    margin-right: 18px;
 }
 
 .navlink:hover:not(.navlink__active) {
@@ -53,3 +53,33 @@
 // .navlink-wrapper:hover::after {
 //     width: 100%;
 // }
+
+
+
+/* =========== User Menu =========== */
+
+.player-button {
+    display: flex;
+    align-items: center;
+    margin-right: 26px;
+}
+
+.player-button__pic-wrapper {
+    background: $background;
+    border-radius: 100%;
+    border: 2px solid $secondary;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    transition: 0.3s;
+}
+
+.player-button__pic-wrapper > img {
+    width: 44px;
+    height: 44px;
+    margin-top: 4px;
+}
+
+.player-button__pic-wrapper:hover {
+    background: $primary;
+}
