@@ -125,6 +125,7 @@
     align-items: center;
     height: 50px;
     border-bottom: 1px solid $item;
+    cursor: pointer;
 }
 
 .user-menu__player__name {
@@ -151,4 +152,8 @@
 
 #user-menu-logout {
     border-bottom: none;
+}
+
+.user-menu-button:hover {
+    background: lighten($dark, 4%);
 }
