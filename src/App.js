@@ -4,7 +4,7 @@ import { GraphQLClient } from 'graphql-request';
 
 import AuthContext from './context/AuthContext';
 import authReducer from './reducers/authReducer';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import LoginForm from './components/LoginForm';
 import ProfilePage from './components/Profile/ProfilePage';
 import PlayerSearchPage from './components/PlayerSearch/PlayerSearchPage';
