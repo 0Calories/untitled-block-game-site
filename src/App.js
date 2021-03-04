@@ -44,8 +44,8 @@ function App() {
         <Navbar />
 
         <Switch>
-          <Route exact path="/" component={!state.isAuthenticated ? LoginForm : ProfilePage} />
-          <Route path="/profile" component={!state.isAuthenticated ? LoginForm : ProfilePage} />
+          <Route exact path="/" component={LoginForm} />
+          {/* <Route path="/profile" component={!state.isAuthenticated ? LoginForm : ProfilePage} /> */}
           <Route exact path="/players" component={PlayerSearchPage} />
           <Route path="/players/:playerId" component={ProfilePage} />
         </Switch>

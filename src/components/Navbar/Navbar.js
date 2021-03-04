@@ -1,17 +1,10 @@
-import { React, useContext } from 'react';
+import { React } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import CashCount from '../CashCount';
 import UserMenu from './UserMenu';
-import AuthContext from '../../context/AuthContext';
 
 const Navbar = () => {
-  const { dispatch } = useContext(AuthContext);
-
-  const logOut = (e) => {
-    e.preventDefault();
-    dispatch({ type: 'LOGOUT' });
-  };
 
   return (
     <div className="navbar">

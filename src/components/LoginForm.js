@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { gql } from 'graphql-request';
+import { useHistory } from 'react-router-dom';
 
 import AuthContext from '../context/AuthContext';
 
@@ -16,6 +17,7 @@ const login = gql`
 `;
 
 const LoginForm = () => {
+  const history = useHistory();
   const { dispatch, graphQLClient } = useContext(AuthContext);
   const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
@@ -41,6 +43,7 @@ const LoginForm = () => {
       });
 
       graphQLClient.setHeader('Authorization', `Bearer ${response.login.token}`);
+      history.push('/players/me');
     } catch (error) {
       console.error(error.response.errors[0].message);
       setError(error.response.errors[0].message);

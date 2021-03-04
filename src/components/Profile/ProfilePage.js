@@ -54,12 +54,12 @@ const ProfilePage = () => {
       let response;
       let character;
 
-      if (playerId) {
-        response = await graphQLClient.request(getCharacter, { id: parseInt(playerId) });
-        character = response.getCharacter;
-      } else {
+      if (playerId === 'me') {
         response = await graphQLClient.request(myCharacter);
         character = response.myCharacter;
+      } else {
+        response = await graphQLClient.request(getCharacter, { id: parseInt(playerId) });
+        character = response.getCharacter;
       }
 
       console.dir(response);
