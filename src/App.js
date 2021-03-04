@@ -8,6 +8,7 @@ import Navbar from './components/Navbar/Navbar';
 import LoginForm from './components/LoginForm';
 import ProfilePage from './components/Profile/ProfilePage';
 import PlayerSearchPage from './components/PlayerSearch/PlayerSearchPage';
+import HomePage from './components/HomePage';
 
 import './styles/styles.scss';
 
@@ -44,7 +45,8 @@ function App() {
         <Navbar />
 
         <Switch>
-          <Route exact path="/" component={LoginForm} />
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/login" component={LoginForm} />
           {/* <Route path="/profile" component={!state.isAuthenticated ? LoginForm : ProfilePage} /> */}
           <Route exact path="/players" component={PlayerSearchPage} />
           <Route path="/players/:playerId" component={ProfilePage} />

@@ -1,0 +1,27 @@
+.download-button {
+    background-color: $primary;
+    border: none;
+    border-radius: 7px; 
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 24px;
+    margin-top: 5rem;
+    width: 180px;
+    height: 60px;
+    transition: 0.3s;
+}
+
+.download-button:hover {
+    background-color: darken($primary, 25);
+}
+
+.download-button__icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
