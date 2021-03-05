@@ -3,6 +3,7 @@ import { gql } from 'graphql-request';
 import { useHistory } from 'react-router-dom';
 
 import AuthContext from '../context/AuthContext';
+import Loading from './Loading/LoadingModal';
 
 const login = gql`
   mutation($data: LoginInput!) {
@@ -19,9 +20,13 @@ const login = gql`
 const LoginForm = () => {
   const history = useHistory();
   const { dispatch, graphQLClient } = useContext(AuthContext);
+
+  // State vars
   const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDone, setIsDone] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -34,7 +39,11 @@ const LoginForm = () => {
     };
 
     try {
+      setIsLoading(true);
       const response = await graphQLClient.request(login, variables);
+
+      setIsLoading(false);
+      setIsDone(true);
 
       dispatch({
         type: 'LOGIN',
@@ -43,7 +52,11 @@ const LoginForm = () => {
       });
 
       graphQLClient.setHeader('Authorization', `Bearer ${response.login.token}`);
-      history.push('/players/me')
+
+      // Let the load complete animation show before continuing
+      setTimeout(() => {
+        history.push('/players/me');
+      }, 1500);
     } catch (error) {
       console.error(error.response.errors[0].message);
       setError(error.response.errors[0].message);
@@ -80,6 +93,15 @@ const LoginForm = () => {
           </button>
         </form>
       </div>
+
+      <Loading
+        isLoading={isLoading}
+        isDone={isDone}
+        includeDoneAnim={true}
+        message={'Logging in...'}
+        isModal
+      />
+
     </div>
   );
 };

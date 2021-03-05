@@ -1,9 +1,6 @@
-import Loading from './Loading/Loading';
-
 const HomePage = () => {
   return (
     <div className="home-page">
-      <Loading />
 
       <h1>Welcome!</h1>
 
@@ -22,6 +19,13 @@ const HomePage = () => {
         <li>Open the folder and run Untitled Block Game.exe</li>
       </ol>
 
+      <a className="download-button" href="https://blockgame-world-files.s3.ca-central-1.amazonaws.com/UntitledBlockGame.zip">
+        <svg className="download-button__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+          Download
+      </a>
+
       <h2>How to Play</h2>
       <ul>
         <li>Enter your log in details to load in your home world</li>
@@ -32,13 +36,6 @@ const HomePage = () => {
         <li>Press F1 to save your world and upload it to the server (your home world on your profile will get updated)</li>
       </ul>
 
-      <h2>Windows</h2>
-      <a className="download-button" href="https://blockgame-world-files.s3.ca-central-1.amazonaws.com/UntitledBlockGame.zip">
-        <svg className="download-button__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
-          Download
-      </a>
     </div>
   );
 };
