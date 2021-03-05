@@ -60,6 +60,8 @@ const LoginForm = () => {
     } catch (error) {
       console.error(error.response.errors[0].message);
       setError(error.response.errors[0].message);
+      setIsLoading(false);
+
     }
   };
 
