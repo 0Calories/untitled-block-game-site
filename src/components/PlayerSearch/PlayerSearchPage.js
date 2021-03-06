@@ -24,8 +24,12 @@ const PlayerSearchPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await graphQLClient.request(getPlayers);
-      console.dir(response.getCharacters);
-      setCharacters(response.getCharacters);
+      // Sort by join date
+      const sortedCharacters = response.getCharacters.sort((charA, charB) => {
+        return parseInt(charA.joinDate) - parseInt(charB.joinDate);
+      });
+
+      setCharacters(sortedCharacters);
     };
 
     fetchData();
