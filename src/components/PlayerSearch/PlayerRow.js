@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import moment from 'moment';
 
 import CashCount from '../CashCount';
 
@@ -20,7 +21,7 @@ const PlayerRow = ({ character }) => {
       </div>
 
       <div className="character-details">
-        <p className="join-date">Joined: Feb 28, 2021</p>
+        <p className="join-date">Joined: {moment(parseInt(character.joinDate)).format('MMMM Do, YYYY')}</p>
         <CashCount bobux={character.bobux} />
       </div>
 

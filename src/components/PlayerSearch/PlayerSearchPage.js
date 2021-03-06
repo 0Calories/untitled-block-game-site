@@ -12,6 +12,7 @@ const getPlayers = gql`
       name
       bio
       bobux
+      joinDate
     }
   }
 `;
@@ -23,6 +24,7 @@ const PlayerSearchPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await graphQLClient.request(getPlayers);
+      console.dir(response.getCharacters);
       setCharacters(response.getCharacters);
     };
 
