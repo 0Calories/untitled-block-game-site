@@ -1,5 +1,6 @@
 .search-page {
-    padding: 0 4rem 0 4rem;
+    padding: 0 18rem 0 18rem;
+    min-width: 40rem;
 }
 
 
@@ -118,6 +119,9 @@
     height: 120px;
     margin-top: 26px;
     flex: 0.9;
+    white-space:pre-line;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .bio-text {
