@@ -61,14 +61,25 @@ const Navbar = () => {
       {state.isAuthenticated && <UserMenu character={character} />}
 
       {!state.isAuthenticated &&
-        <NavLink
-          to="/login"
-          exact
-          className="navbar__login-button"
-          activeClassName="navbar__login-button--hidden"
-        >
-          Log In
-        </NavLink>
+        <div className="navbar__login-register">
+          <NavLink
+            to="/login"
+            exact
+            className="navbar__login-link"
+            activeClassName="navbar__login-link--hidden"
+          >
+            Log In
+          </NavLink>
+
+          <NavLink
+            to="/register"
+            exact
+            className="navbar__register-button"
+            activeClassName="navbar__register-button--hidden"
+          >
+            Sign Up
+          </NavLink>
+        </div>
       }
 
     </div>

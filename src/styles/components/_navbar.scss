@@ -31,7 +31,7 @@
     background: lighten($background, 1%);
 }
 
-.navbar__login-button {
+.navbar__register-button {
     background-color: $primary;
     border: none;
     border-radius: 7px; 
@@ -42,20 +42,38 @@
     justify-content: center;
     font-weight: 800;
     font-size: 24px;
-    width: 137px;
-    height: 51px;
+    width: 108px;
+    height: 35px;
     text-decoration: none;
     text-align: center;
     transition: 0.3s;
-    margin: 1rem 1rem 0 auto;
+    margin: 1.5rem 1rem 0 auto;
 }
 
-.navbar__login-button:hover {
+.navbar__register-button:hover {
     background-color: darken($primary, 25);
 }
 
-.navbar__login-button--hidden {
+.navbar__register-button--hidden {
     display: none;
+}
+
+.navbar__login-link {
+    margin: 1.7rem 2rem;
+    color: $primary;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 22px;
+}
+
+.navbar__login-link--hidden {
+    display: none;
+}
+
+.navbar__login-register {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
 }
 
 
