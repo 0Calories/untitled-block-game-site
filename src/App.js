@@ -5,7 +5,7 @@ import { GraphQLClient } from 'graphql-request';
 import AuthContext from './context/AuthContext';
 import authReducer from './reducers/authReducer';
 import Navbar from './components/Navbar/Navbar';
-import LoginForm from './components/LoginForm';
+import LoginRegisterForm from './components/LoginRegisterForm';
 import ProfilePage from './components/Profile/ProfilePage';
 import PlayerSearchPage from './components/PlayerSearch/PlayerSearchPage';
 import HomePage from './components/HomePage';
@@ -46,7 +46,12 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/login" component={LoginForm} />
+          <Route exact path="/login">
+            <LoginRegisterForm type={'login'} />
+          </Route>
+          <Route exact path="/register">
+            <LoginRegisterForm type={'register'} />
+          </Route>
           {/* <Route path="/profile" component={!state.isAuthenticated ? LoginForm : ProfilePage} /> */}
           <Route exact path="/players" component={PlayerSearchPage} />
           <Route path="/players/:playerId" component={ProfilePage} />
