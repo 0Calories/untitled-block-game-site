@@ -34,7 +34,7 @@ const Navbar = () => {
     if (state.isAuthenticated) {
       fetchData();
     }
-  }, [graphQLClient, state.isAuthenticated]);
+  }, [graphQLClient, state.isAuthenticated, dispatch]);
 
 
   return (
