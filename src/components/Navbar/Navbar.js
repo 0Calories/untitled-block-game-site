@@ -16,13 +16,19 @@ const myCharacter = gql`
 `;
 
 const Navbar = () => {
-  const { state, graphQLClient } = useContext(AuthContext);
+  const { state, graphQLClient, dispatch } = useContext(AuthContext);
   const [character, setCharacter] = useState({ name: 'N/A', bobux: 0 });
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await graphQLClient.request(myCharacter);
-      setCharacter(response.myCharacter);
+      try {
+        const response = await graphQLClient.request(myCharacter);
+        setCharacter(response.myCharacter);
+      } catch (error) {
+        console.error(error.response.errors[0].message);
+        // If an error is caught here, it is most likely because the jwt is expired or invalid
+        dispatch({ type: 'LOGOUT' });
+      }
     };
 
     if (state.isAuthenticated) {
