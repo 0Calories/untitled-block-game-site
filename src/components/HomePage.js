@@ -1,4 +1,9 @@
 const HomePage = () => {
+
+  const handleErrorButtonClick = () => {
+    throw new Error('An error occurred when clicking the button!');
+  }
+
   return (
     <div className="home-page">
 
@@ -35,6 +40,10 @@ const HomePage = () => {
         <li>Click anywhere in the world to spawn a block</li>
         <li>Press F1 to save your world and upload it to the server (your home world on your profile will get updated)</li>
       </ul>
+
+      <button onClick={handleErrorButtonClick}>
+        Test Error
+      </button>
 
     </div>
   );
