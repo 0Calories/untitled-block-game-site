@@ -1,6 +1,9 @@
 import { React, useReducer } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import { GraphQLClient } from 'graphql-request';
+import * as Sentry from '@sentry/react';
+import { BrowserTracing } from '@sentry/tracing';
 
 import AuthContext from './context/AuthContext';
 import authReducer from './reducers/authReducer';
@@ -11,6 +14,19 @@ import PlayerSearchPage from './components/PlayerSearch/PlayerSearchPage';
 import HomePage from './components/HomePage';
 
 import './styles/styles.scss';
+
+const history = createBrowserHistory();
+
+Sentry.init({
+  dsn: "https://fb61d34d27a54b4995afb087d0760aef@o1121153.ingest.sentry.io/6157381",
+  integrations: [
+    new BrowserTracing({
+      // Can also use reactRouterV3Instrumentation or reactRouterV4Instrumentation
+      routingInstrumentation: Sentry.reactRouterV5Instrumentation(history),
+    }),
+  ],
+  tracesSampleRate: 1.0,
+});
 
 const API_URL = 'https://untitled-block-game-api.herokuapp.com/';
 
@@ -41,7 +57,7 @@ function App() {
         graphQLClient
       }}
     >
-      <Router>
+      <Router history={history}>
         <Navbar />
 
         <Switch>
