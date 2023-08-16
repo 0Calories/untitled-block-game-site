@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { gql } from 'graphql-request';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import AuthContext from '../context/AuthContext';
 import Loading from './Loading/LoadingModal';
@@ -30,7 +30,7 @@ const createUser = gql`
 `;
 
 const LoginRegisterForm = ({ type }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { dispatch, graphQLClient } = useContext(AuthContext);
 
   // State vars
@@ -72,7 +72,7 @@ const LoginRegisterForm = ({ type }) => {
 
       // Let the load complete animation show before continuing
       setTimeout(() => {
-        history.push('/players/me');
+        navigate('/players/me');
       }, 1500);
     } catch (error) {
       console.error(error.response.errors[0].message);
@@ -115,7 +115,7 @@ const LoginRegisterForm = ({ type }) => {
 
       // Let the load complete animation show before continuing
       setTimeout(() => {
-        history.push('/players/me');
+        navigate('/players/me');
       }, 1500);
     } catch (error) {
       console.dir(error);

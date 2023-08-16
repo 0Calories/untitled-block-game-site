@@ -1,5 +1,5 @@
 import { React, useReducer } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GraphQLClient } from 'graphql-request';
 
 import AuthContext from './context/AuthContext';
@@ -44,18 +44,14 @@ function App() {
       <Router>
         <Navbar />
 
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/login">
-            <LoginRegisterForm type={'login'} />
-          </Route>
-          <Route exact path="/register">
-            <LoginRegisterForm type={'register'} />
-          </Route>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginRegisterForm type={'login'} />} />
+          <Route path="/register" element={<LoginRegisterForm type={'register'} />} />
           {/* <Route path="/profile" component={!state.isAuthenticated ? LoginForm : ProfilePage} /> */}
-          <Route exact path="/players" component={PlayerSearchPage} />
-          <Route path="/players/:playerId" component={ProfilePage} />
-        </Switch>
+          <Route path="/players" element={<PlayerSearchPage />} />
+          <Route path="/players/:playerId" element={<ProfilePage />} />
+        </Routes>
       </Router>
     </AuthContext.Provider>
   );

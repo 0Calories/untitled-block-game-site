@@ -1,11 +1,11 @@
 import { React, useContext, useState, useRef, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import AuthContext from '../../context/AuthContext';
 
 const UserMenu = ({ character }) => {
   const { dispatch } = useContext(AuthContext);
-  const history = useHistory();
+  const navigate = useNavigate();
   const buttonRef = useRef(null);
   const menuRef = useRef(null);
 
@@ -37,12 +37,12 @@ const UserMenu = ({ character }) => {
 
   const handleProfileClick = () => {
     setVisibility(false);
-    history.push('/players/me');
+    navigate('/players/me');
   }
 
   const handleLogOut = () => {
     dispatch({ type: 'LOGOUT' });
-    history.push('/');
+    navigate('/');
   }
 
   return (
